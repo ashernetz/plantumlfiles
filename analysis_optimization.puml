@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor Líder_RRHH as hrLeader
+actor Gerente_Contratación as hiringManager
+boundary ATS as "Applicant Tracking System"
+
+hrLeader --> ATS : Utiliza
+hiringManager --> ATS : Utiliza
+
+rectangle Análisis_y_Optimización {
+  ATS -- "Análisis de Datos"
+  ATS -- "Revisión de Métricas"
+  ATS -- "Identificación de Áreas de Mejora"
+  ATS -- "Toma de Decisiones Estratégicas"
+}
+@enduml
