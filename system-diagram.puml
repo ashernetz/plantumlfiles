@@ -1,0 +1,47 @@
+@startuml
+
+package "Applicant Tracking System (ATS)" {
+
+  interface "Interfaz de Usuario" as UI
+  database "Base de Datos" as DB
+  entity "Algoritmos de IA" as AI
+  entity "Sistema de Análisis" as Analytics
+  entity "Integraciones Externas" as ExternalIntegrations
+
+  UI --[hidden] DB
+  UI --[hidden] AI
+  UI --[hidden] Analytics
+  UI --[hidden] ExternalIntegrations
+
+  DB --[hidden] AI
+  DB --[hidden] Analytics
+  DB --[hidden] ExternalIntegrations
+
+  AI ..> "Procesamiento de Currículums"
+  Analytics ..> "Análisis Predictivo"
+  ExternalIntegrations ..> "Redes Sociales"
+  ExternalIntegrations ..> "Sistemas de Gestión de Recursos Humanos"
+
+}
+
+package "Usuarios" {
+
+  entity "Reclutadores"
+  entity "Candidatos"
+
+  "Candidatos" --[hidden] "Interfaz de Usuario"
+  "Reclutadores" --[hidden] "Interfaz de Usuario"
+
+}
+
+package "Integraciones Externas" {
+
+  entity "LinkedIn"
+  entity "HRMS"
+
+}
+
+UI ..> "Usuarios"
+ExternalIntegrations ..> "Integraciones Externas"
+
+@enduml
