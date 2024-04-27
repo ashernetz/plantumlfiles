@@ -1,0 +1,43 @@
+@startuml
+
+actor Reclutador as recruiter
+actor Candidato as candidate
+
+package "Interfaz de Usuario (UI)" {
+    rectangle "Interfaz de Usuario (UI)" as UI {
+        actor Reclutador as recruiter
+        actor Candidato as candidate
+    }
+}
+package "Base de Datos (DB)" {
+    rectangle "Base de Datos (DB)" as DB
+}
+
+package "Algoritmos de IA (AI)" {
+    rectangle "Algoritmos de IA (AI)" as AI
+}
+
+package "Sistema de Análisis (Analytics)" {
+    rectangle "Sistema de Análisis (Analytics)" as Analytics
+}
+
+package "Integraciones Externas" {
+    rectangle "Integraciones Externas" as External_Integrations
+}
+
+recruiter --> UI : Utiliza Interfaz de Reclutador
+candidate --> UI : Utiliza Interfaz de Candidato
+
+UI --> DB : Publicar Ofertas\nRevisar Currículums\nProgramar Entrevistas\nSeguimientos de Candidatos
+candidate --> UI : Buscar y Aplicar a Ofertas\nCargar Currículums\nSeguimiento del Estado de las Solicitudes
+
+DB --> AI : Almacena Datos\nAlmacena Currículums\nAlmacena Detalles de la Oferta\nAlmacena Datos de la Entrevista\nAlmacena Seguimientos de Candidatos
+AI --> DB : Accede a Datos\nAnaliza Currículums\nGenera Resultados de Análisis\nAlmacena Resultados de Análisis
+
+AI --> Analytics : Análisis de Datos\nGenera Informes de Análisis\nGenera Tendencias y Patrones
+Analytics --> AI : Proporciona Datos para Análisis\nProporciona Métricas Clave para Análisis
+
+External_Integrations --> UI : Conexión a Redes Sociales Profesionales\nConexión a Sistemas de Gestión de Recursos Humanos (HRMS)
+External_Integrations --> DB : Conexión a HRMS\nConexión a Sistemas Externos de Gestión de Currículums
+
+@enduml
