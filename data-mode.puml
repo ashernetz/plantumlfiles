@@ -1,0 +1,78 @@
+@startuml
+
+entity "Candidato" {
+  + id: int (PK)
+  --
+  nombre: string
+  apellido: string
+  correo_electronico: string
+  telefono: string
+  direccion: string
+  habilidades: string
+  experiencia_laboral: string
+  educacion: string
+}
+
+entity "Oferta de Trabajo" {
+  + id: int (PK)
+  --
+  titulo: string
+  descripcion: string
+  fecha_publicacion: date
+  fecha_cierre: date
+  estado: string
+}
+
+entity "Solicitud de Empleo" {
+  + id: int (PK)
+  --
+  fecha_envio: date
+  estado: string
+}
+
+entity "Entrevista" {
+  + id: int (PK)
+  --
+  fecha: date
+  tipo: string
+  descripcion: string
+  estado: string
+}
+
+entity "Reclutador" {
+  + id: int (PK)
+  --
+  nombre: string
+  apellido: string
+  correo_electronico: string
+  telefono: string
+  departamento: string
+}
+
+entity "Usuario" {
+  + id: int (PK)
+  --
+  nombre_usuario: string
+  contrasena: string
+  tipo: string
+}
+
+entity "Actividad" {
+  + id: int (PK)
+  --
+  descripcion: string
+  fecha: date
+}
+
+Candidato ||--o{ "Solicitud de Empleo" : Aplica
+"Solicitud de Empleo" ||--|{ "Oferta de Trabajo" : Se refiere a
+"Oferta de Trabajo" ||--o{ Entrevista : Programa
+Reclutador ||--o{ Entrevista : Realiza
+Usuario ||--o{ "Reclutador" : Es un
+Usuario ||--o{ "Candidato" : Es un
+Usuario ||--o{ "Administrador" : Es un
+"Oferta de Trabajo" ||--|{ "Actividad" : Tiene
+"Solicitud de Empleo" ||--|{ "Actividad" : Tiene
+"Entrevista" ||--|{ "Actividad" : Tiene
+
+@enduml
