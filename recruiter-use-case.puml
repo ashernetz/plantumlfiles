@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+
+actor Reclutador as recruiter
+boundary ATS as "Applicant Tracking System"
+
+recruiter --> ATS : Utiliza
+
+rectangle Proceso_de_Contratación {
+  ATS -- "Publicación de Ofertas"
+  ATS -- "Gestión de Currículums"
+  ATS -- "Programación de Entrevistas"
+  ATS -- "Evaluación de Candidatos"
+  ATS -- "Colaboración de Equipo"
+}
+@enduml
