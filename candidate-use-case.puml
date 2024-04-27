@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+
+actor Candidato as candidate
+boundary ATS as "Applicant Tracking System"
+
+candidate --> ATS : Utiliza
+
+rectangle Experiencia_Mejorada {
+  ATS -- "Envío de Currículums"
+  ATS -- "Seguimiento del Estado de las Solicitudes"
+  ATS -- "Actualizaciones Automáticas"
+  ATS -- "Comunicación con Reclutadores"
+  ATS -- "Participación en Entrevistas"
+}
+@enduml
